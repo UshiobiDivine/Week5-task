@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #444;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+h1,h2{
+    font-weight: normal;
+}
+#wrapper{
+    width: 90%;
+    max-width: 960px;
+    margin: 20px auto;
+    border-radius: 6px;
+    box-shadow: 0px 1px 6px rgb(209, 208, 211);
+    box-sizing: border-box;
+    padding: 0 0 20px;
+    overflow: hidden;
+    border: 3px solid rgb(105, 0, 0);
+}
+
+#page-banner{
+    background: rgb(255, 246, 246);
+    padding: 13px 0;
+    color:rgb(77, 17, 17);
+    margin-bottom: 15px;
+    /* border: 1px solid rgb(105, 0, 0); */
+}
+#page-banner h1, #page-banner p{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    
+}
+#page-banner input{
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+#book-list, #add-book, #tabbed-content{
+    margin:20px;
+}
+#book-list ul, #tabbed-content ul{
+    list-style-type: none;
+    padding: 0;
+}
+#book-list li{
+    padding: 20px;
+    border-left: 5px solid #ddd;
+    margin: 20px 10px;
+    opacity: 1;
+    height:100%;
+    transition: all 1s;
+}
+#book-list li:hover{
+    border-color: #aa4c4c;
+}
+.delete{
+    color: white;
+    float: right;
+    background: #a03f3f;
+    padding: 6px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.delete:hover{
+    background: rgb(131, 69, 58);
+}
+#add-book{
+    width: 400px;
+    margin: 0 auto;
+}
+#add-book button{
+    border: 1px solid #9361bf;
+    background: #4d1d1d;
+    padding: 10px 20px;
+    font-size: 16px;
+    display: inline-block;
+    margin: 0;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    width: 100px;
+    /* float: left; */
+    margin: 20px 0;
+    border-left: 0;
+    color: white;
+}
+#add-book button:hover{
+    background: #a14343;
+}
+
+#add-book input{
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 4px 0 04px;
+    box-sizing: border-box;
+    width: 300px;
+    float: left;
+}
+
+#add-book:aftter{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.title1{
+    padding-left: 10px;
+}
+
+.aPanel{
+    opacity: 1;
+    height:100%;
+    transition: all 1s;
+}
+.aPanel.aPanelHidden{
+    opacity: 0;
+    height: 0px;
+    
+}
+.aPanelShown{
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+}
+.aPanelStyle{
+    color:rgb(105, 0, 0);
+    background: rgb(255, 255, 255);
+}
+footer{
+    width: 100%;
+    margin: 0;
+    background:#4d1d1d;
+    color: white;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    letter-spacing: 7px;
+}
+footer>p{
+    background-color:#4d1d1d;
+    padding: 5px;
+    margin:30px 0;
+    font-size: 70%;
+}
+#head{
+    width: 100%;
+    margin: 0;
+    background:rgb(255, 255, 255);
+    color: white;
+    padding: 0 0 10px 0;
+    text-align: center;
+    letter-spacing: 15px;
+
+}
+#head>.dw{
+    padding: 100px;
+    margin-top: 0;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: rgb(46, 13, 8);
+    
+    box-shadow: 0 4px 2px rgba(3, 3, 3, 0.377);
+    
+    }
+.tab{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color:#ffffff;
+
+}
+.item{
+    margin: 0 5px 0 5px;
+    background-color: rgba(221, 187, 187, 0.555);
+    padding: 20px;
+    color: rgb(75, 12, 12);
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 2px rgba(3, 3, 3, 0.377);
+    border: 3px solid rgb(85, 4, 4);
+}
+#shelve>li{
+   background-color:rgb(255, 255, 255);
+   text-align: center;
+   list-style: none;
+
+}
+.kkk{
+    text-align: center;
+}
+
+
+.custom-shape-divider-top-1619290834 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 2;
+}
+
+.custom-shape-divider-top-1619290834 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-top-1619290834 .shape-fill {
+    fill: #4d1d1d;
+    z-index: 3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="not">
+
+    </div>
+    <div id="head">
+    
+        <div class="custom-shape-divider-top-1619290834">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <div class = "dw">Divine World</div>
+    </div>
+    
+    <div class="tab">
+
+        <div class="item item1">Home</div>
+        <div class="item item2">Cart</div>
+        <div class="item item3">Logs</div>
+        <div class="item item4">Teeks</div>
+    
+    </div>
+    
+    <div id="wrapper">
+
+       
+        <header>
+            <div id="page-banner">
+                <h1 class="title">DLibrary</h1>
+                <p>Books Catalog</p>
+                <form id="search-books">
+                    <input type="text" placeholder="Search books...">
+                </form>
+            </div>
+        </header>
+
+        <div class="kkk">
+            <button onclick="fadeInAndOut(this)" style="font-size:20px; padding: 10px 0 10px 0; width:30%; color:white; background-color:#802828; border-radius: 20px; border:rgb(105, 0, 0)">Shelves</button>
+            <div class="aPanel aPanelHidden aPanelStyle">
+                <ul id="shelve">
+                    <li>Sci Fi</li>
+                    <li>Romance</li>
+                    <li>Comedy</li>
+                    <li>Earth</li>
+                    <li>Misc</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="book-list">
+            <h2 class="title1">Some Books to read</h2>
+            <ul>
+                <li>
+                    <span class="name">Name of the wind</span>
+                    <span class="delete">delete</span>
+                </li>
+                <li>
+                    <span class="name">The wise man</span>
+                    <span class="delete">delete</span>
+                </li>
+                <li>
+                    <span class="name">Dee on the shore</span>
+                    <span class="delete" >delete</span>
+                </li>
+                <li>
+                    <span class="name">Patterns in and Divine  </span>
+                    <span class="delete">delete</span>
+                </li>
+            </ul>
+        </div>
+
+        <form id="add-book">
+            <input type="text" placeholder="Add a book..."/>
+            <button>Add</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>Copyright @DivineWorld 2021</p>
+    </footer>
+
+
+    <script>
+
+var list = document.querySelectorAll('#book-list li .name');
+list.forEach(function (book) {
+    //book.textContent += ' (book title)';
+});
+
+var bookList = document.querySelector('#book-list');
+
+const banner = document.querySelector('#page-banner');
+const clonedBan = banner.cloneNode(false);
+//console.log(bookList.previousElementSibling);
+
+function fadeInAndOut(thz) {
+    var elmt = thz.nextElementSibling;
+    elmt.classList.toggle("aPanelHidden");
+}
+
+//Delete function
+var btns = document.querySelectorAll('#book-list .delete');
+btns.forEach(function (b) {
+    b.addEventListener('click', function (event) {
+        alert('Delete this book?');
+        const li = event.target.parentElement;
+        li.style.opacity=0;
+        li.style.display = 'none';
+        
+    })
+});
+
+
+//Hide Checkbox
+// var chkbtn = document.querySelector('#wrapper .checker');
+// chkbtn.addEventListener('change', function (e) {
+//     if (chkbtn.checked == true) {
+//         bookList.style.display = 'none';
+        
+//     } else {
+//         bookList.style.display = 'initial';
+//     }
+// });
+
+
+
+const aForm = document.forms['add-book'];
+aForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+var textss = aForm.querySelector('input[type="text"]').value;
+
+//create elements
+    const li = document.createElement('li');
+    const myTxt = document.createElement('span');
+    const myBtn = document.createElement('span');
+
+//add content
+    myBtn.textContent='delete';
+    myTxt.textContent=textss;
+
+    myBtn.classList.add('delete');
+    myTxt.classList.add('name');
+
+    li.appendChild(myTxt);
+    li.appendChild(myBtn);
+    
+    bookList.querySelector('ul').appendChild(li);
+
+    var aa = document.querySelector('#add-book input[type="text"]');
+    aa.value = '';
+
+    
+    /*var btns = document.querySelectorAll('#book-list .delete');
+    btns.forEach(function (b) {
+        b.addEventListener('click', function (event) {
+            const li = event.target.parentElement;
+            li.style.display = 'none';
+
+        })
+    });*/
+
+
+});
+
+
+ 
+    </script>
+</body>
+</html>
